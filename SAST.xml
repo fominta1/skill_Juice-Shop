@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="29" tests="29" time="0.0">
+	<testsuite disabled="0" errors="0" failures="29" name="semgrep results" skipped="0" tests="29" time="0">
+		<testcase name="javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection" classname="data/static/codefixes/dbSchemaChallenge_1.ts" file="data/static/codefixes/dbSchemaChallenge_1.ts" line="5">
+			<failure type="ERROR" message="Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.">    models.sequelize.query(&quot;SELECT * FROM Products WHERE ((name LIKE '%&quot;+criteria+&quot;%' OR description LIKE '%&quot;+criteria+&quot;%') AND deletedAt IS NULL) ORDER BY name&quot;)
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.injection.tainted-sql-string.tainted-sql-string" classname="data/static/codefixes/dbSchemaChallenge_1.ts" file="data/static/codefixes/dbSchemaChallenge_1.ts" line="5">
+			<failure type="ERROR" message="Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.">    models.sequelize.query(&quot;SELECT * FROM Products WHERE ((name LIKE '%&quot;+criteria+&quot;%' OR description LIKE '%&quot;+criteria+&quot;%') AND deletedAt IS NULL) ORDER BY name&quot;)
+</failure>
+		</testcase>
+		<testcase name="javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection" classname="data/static/codefixes/dbSchemaChallenge_3.ts" file="data/static/codefixes/dbSchemaChallenge_3.ts" line="11">
+			<failure type="ERROR" message="Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.">    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.injection.tainted-sql-string.tainted-sql-string" classname="data/static/codefixes/dbSchemaChallenge_3.ts" file="data/static/codefixes/dbSchemaChallenge_3.ts" line="11">
+			<failure type="ERROR" message="Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.">    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
+</failure>
+		</testcase>
+		<testcase name="javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection" classname="data/static/codefixes/unionSqlInjectionChallenge_1.ts" file="data/static/codefixes/unionSqlInjectionChallenge_1.ts" line="6">
+			<failure type="ERROR" message="Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.">    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.injection.tainted-sql-string.tainted-sql-string" classname="data/static/codefixes/unionSqlInjectionChallenge_1.ts" file="data/static/codefixes/unionSqlInjectionChallenge_1.ts" line="6">
+			<failure type="ERROR" message="Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.">    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
+</failure>
+		</testcase>
+		<testcase name="javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection" classname="data/static/codefixes/unionSqlInjectionChallenge_3.ts" file="data/static/codefixes/unionSqlInjectionChallenge_3.ts" line="10">
+			<failure type="ERROR" message="Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.">    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.injection.tainted-sql-string.tainted-sql-string" classname="data/static/codefixes/unionSqlInjectionChallenge_3.ts" file="data/static/codefixes/unionSqlInjectionChallenge_3.ts" line="10">
+			<failure type="ERROR" message="Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.">    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
+</failure>
+		</testcase>
+		<testcase name="javascript.jsonwebtoken.security.jwt-hardcode.hardcoded-jwt-secret" classname="lib/insecurity.ts" file="lib/insecurity.ts" line="56">
+			<failure type="WARNING" message="A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).">export const authorize = (user = {}) =&gt; jwt.sign(user, privateKey, { expiresIn: '6h', algorithm: 'RS256' })
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.injection.raw-html-format.raw-html-format" classname="routes/chatbot.ts" file="routes/chatbot.ts" line="198">
+			<failure type="WARNING" message="User data flows into the host portion of this manually-constructed HTML. This can introduce a Cross-Site-Scripting (XSS) vulnerability if this comes from user-provided input. Consider using a sanitization library such as DOMPurify to sanitize the HTML within.">        body: bot.training.state ? bot.greet(`${user.id}`) : `${config.get&lt;string&gt;('application.chatBot.name')} isn't ready at the moment, please wait while I set things up`
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-path-join-resolve-traversal.express-path-join-resolve-traversal" classname="routes/dataErasure.ts" file="routes/dataErasure.ts" line="69">
+			<failure type="WARNING" message="Possible writing outside of the destination, make sure that the target path is nested in the intended destination">      const filePath: string = path.resolve(req.body.layout).toLowerCase()
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-res-sendfile.express-res-sendfile" classname="routes/fileServer.ts" file="routes/fileServer.ts" line="33">
+			<failure type="WARNING" message="The application processes user-input, this is passed to res.sendFile which can allow an attacker to arbitrarily read files on the system through path traversal. It is recommended to perform input validation in addition to canonicalizing the path. This allows you to validate the path against the intended directory it should be accessing.">      res.sendFile(path.resolve('ftp/', file))
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-res-sendfile.express-res-sendfile" classname="routes/keyServer.ts" file="routes/keyServer.ts" line="14">
+			<failure type="WARNING" message="The application processes user-input, this is passed to res.sendFile which can allow an attacker to arbitrarily read files on the system through path traversal. It is recommended to perform input validation in addition to canonicalizing the path. This allows you to validate the path against the intended directory it should be accessing.">      res.sendFile(path.resolve('encryptionkeys/', file))
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-path-join-resolve-traversal.express-path-join-resolve-traversal" classname="routes/keyServer.ts" file="routes/keyServer.ts" line="14">
+			<failure type="WARNING" message="Possible writing outside of the destination, make sure that the target path is nested in the intended destination">      res.sendFile(path.resolve('encryptionkeys/', file))
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-res-sendfile.express-res-sendfile" classname="routes/logfileServer.ts" file="routes/logfileServer.ts" line="14">
+			<failure type="WARNING" message="The application processes user-input, this is passed to res.sendFile which can allow an attacker to arbitrarily read files on the system through path traversal. It is recommended to perform input validation in addition to canonicalizing the path. This allows you to validate the path against the intended directory it should be accessing.">      res.sendFile(path.resolve('logs/', file))
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-path-join-resolve-traversal.express-path-join-resolve-traversal" classname="routes/logfileServer.ts" file="routes/logfileServer.ts" line="14">
+			<failure type="WARNING" message="Possible writing outside of the destination, make sure that the target path is nested in the intended destination">      res.sendFile(path.resolve('logs/', file))
+</failure>
+		</testcase>
+		<testcase name="javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection" classname="routes/login.ts" file="routes/login.ts" line="36">
+			<failure type="ERROR" message="Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.">    models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${security.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: UserModel, plain: true }) // vuln-code-snippet vuln-line loginAdminChallenge loginBenderChallenge loginJimChallenge
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.injection.tainted-sql-string.tainted-sql-string" classname="routes/login.ts" file="routes/login.ts" line="36">
+			<failure type="ERROR" message="Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.">    models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${security.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: UserModel, plain: true }) // vuln-code-snippet vuln-line loginAdminChallenge loginBenderChallenge loginJimChallenge
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-ssrf.express-ssrf" classname="routes/profileImageUrlUpload.ts" file="routes/profileImageUrlUpload.ts" line="23">
+			<failure type="WARNING" message="The following request request.get() was found to be crafted from user-input `req` which can lead to Server-Side Request Forgery (SSRF) vulnerabilities. It is recommended where possible to not allow user-input to craft the base request, but to be treated as part of the path or query parameter. When user-input is necessary to craft the request, it is recommeneded to follow OWASP best practices to prevent abuse. ">          .get(url)
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-res-sendfile.express-res-sendfile" classname="routes/quarantineServer.ts" file="routes/quarantineServer.ts" line="14">
+			<failure type="WARNING" message="The application processes user-input, this is passed to res.sendFile which can allow an attacker to arbitrarily read files on the system through path traversal. It is recommended to perform input validation in addition to canonicalizing the path. This allows you to validate the path against the intended directory it should be accessing.">      res.sendFile(path.resolve('ftp/quarantine/', file))
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-path-join-resolve-traversal.express-path-join-resolve-traversal" classname="routes/quarantineServer.ts" file="routes/quarantineServer.ts" line="14">
+			<failure type="WARNING" message="Possible writing outside of the destination, make sure that the target path is nested in the intended destination">      res.sendFile(path.resolve('ftp/quarantine/', file))
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-open-redirect.express-open-redirect" classname="routes/redirect.ts" file="routes/redirect.ts" line="19">
+			<failure type="WARNING" message="The application redirects to a URL specified by user-supplied input `query` that is not validated. This could redirect users to malicious locations. Consider using an allow-list approach to validate URLs, or warn users they are being redirected to a third-party website.">      res.redirect(toUrl)
+</failure>
+		</testcase>
+		<testcase name="javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection" classname="routes/search.ts" file="routes/search.ts" line="23">
+			<failure type="ERROR" message="Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.">    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`) // vuln-code-snippet vuln-line unionSqlInjectionChallenge dbSchemaChallenge
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.injection.tainted-sql-string.tainted-sql-string" classname="routes/search.ts" file="routes/search.ts" line="23">
+			<failure type="ERROR" message="Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.">    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`) // vuln-code-snippet vuln-line unionSqlInjectionChallenge dbSchemaChallenge
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.express-insecure-template-usage.express-insecure-template-usage" classname="routes/userProfile.ts" file="routes/userProfile.ts" line="56">
+			<failure type="WARNING" message="User data from `req` is being compiled into the template, which can lead to a Server Side Template Injection (SSTI) vulnerability.">          const fn = pug.compile(template)
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing" classname="server.ts" file="server.ts" line="260">
+			<failure type="WARNING" message="Directory listing/indexing is enabled, which may lead to disclosure of sensitive directories and files. It is recommended to disable directory listing unless it is a public resource. If you need directory listing, ensure that sensitive files are inaccessible when querying the resource.">  app.use('/ftp', serveIndexMiddleware, serveIndex('ftp', { icons: true })) // vuln-code-snippet vuln-line directoryListingChallenge
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing" classname="server.ts" file="server.ts" line="264">
+			<failure type="WARNING" message="Directory listing/indexing is enabled, which may lead to disclosure of sensitive directories and files. It is recommended to disable directory listing unless it is a public resource. If you need directory listing, ensure that sensitive files are inaccessible when querying the resource.">  app.use('/.well-known', serveIndexMiddleware, serveIndex('.well-known', { icons: true, view: 'details' }))
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing" classname="server.ts" file="server.ts" line="268">
+			<failure type="WARNING" message="Directory listing/indexing is enabled, which may lead to disclosure of sensitive directories and files. It is recommended to disable directory listing unless it is a public resource. If you need directory listing, ensure that sensitive files are inaccessible when querying the resource.">  app.use('/encryptionkeys', serveIndexMiddleware, serveIndex('encryptionkeys', { icons: true, view: 'details' }))
+</failure>
+		</testcase>
+		<testcase name="javascript.express.security.audit.express-check-directory-listing.express-check-directory-listing" classname="server.ts" file="server.ts" line="272">
+			<failure type="WARNING" message="Directory listing/indexing is enabled, which may lead to disclosure of sensitive directories and files. It is recommended to disable directory listing unless it is a public resource. If you need directory listing, ensure that sensitive files are inaccessible when querying the resource.">  app.use('/support/logs', serveIndexMiddleware, serveIndex('logs', { icons: true, view: 'details' })) // vuln-code-snippet vuln-line accessLogDisclosureChallenge
+</failure>
+		</testcase>
+	</testsuite>
+</testsuites>
